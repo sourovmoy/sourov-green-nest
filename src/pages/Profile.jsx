@@ -46,9 +46,7 @@ const Profile = () => {
               </label>
               <input
                 type="text"
-                // value={user?.displayName}
                 name="updateName"
-                // onChange={(e) => setName(e.target.value)}
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-gray-800 dark:text-white"
               />
             </div>
@@ -59,7 +57,6 @@ const Profile = () => {
               </label>
               <input
                 type="text"
-                // value={user?.photoURL}
                 name="updatePhoto"
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-gray-800 dark:text-white"
               />
@@ -70,11 +67,6 @@ const Profile = () => {
                 {error}
               </p>
             )}
-            {/* {success && (
-              <p className="text-green-600 bg-green-100 px-3 py-2 rounded-lg text-sm">
-                {success}
-              </p>
-            )} */}
 
             <button
               type="submit"

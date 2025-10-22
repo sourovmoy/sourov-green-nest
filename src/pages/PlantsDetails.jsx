@@ -112,7 +112,7 @@ const PlantsDetails = () => {
                   placeholder="Inter Your Email"
                 />
 
-                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition mr-0 md:mr-8 border-none">
+                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition  border-none">
                   <HiOutlineShoppingBag className="w-5 h-5" /> Book Now
                 </button>
               </fieldset>

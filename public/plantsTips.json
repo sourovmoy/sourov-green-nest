@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Watering Schedule",
+    "description": "Water your indoor plants only when the top inch of soil feels dry. Overwatering can lead to root rot.",
+    "icon": "💧",
+    "category": "Watering"
+  },
+  {
+    "id": 2,
+    "title": "Sunlight Needs",
+    "description": "Place your plants near bright, indirect sunlight. Avoid direct afternoon sun to prevent leaf burn.",
+    "icon": "☀️",
+    "category": "Light"
+  },
+  {
+    "id": 3,
+    "title": "Soil Selection",
+    "description": "Use well-draining potting soil. For succulents or cacti, add sand or perlite to improve drainage.",
+    "icon": "🌿",
+    "category": "Soil"
+  },
+  {
+    "id": 4,
+    "title": "Humidity Levels",
+    "description": "Keep humidity between 40–60%. Mist leaves or use a humidifier for tropical plants.",
+    "icon": "🌫️",
+    "category": "Humidity"
+  },
+  {
+    "id": 5,
+    "title": "Fertilizing Routine",
+    "description": "Feed your plants monthly with a balanced liquid fertilizer during the growing season (spring to summer).",
+    "icon": "🧪",
+    "category": "Nutrition"
+  },
+  {
+    "id": 6,
+    "title": "Pruning & Trimming",
+    "description": "Regularly trim dead or yellow leaves to promote new growth and keep your plant looking fresh.",
+    "icon": "✂️",
+    "category": "Maintenance"
+  }
+]

@@ -1,5 +1,4 @@
 import React from "react";
-import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoStarSharp } from "react-icons/io5";
 import { Link } from "react-router";
 
@@ -52,7 +51,7 @@ const PlantCard = ({ data }) => {
             </span>
 
             <button className="flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-700 transition-all duration-200">
-              <HiOutlineShoppingBag className="w-4 h-4" /> Buy Now
+              View Details
             </button>
           </div>
         </div>

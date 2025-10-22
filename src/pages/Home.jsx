@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/virtual";
 import "swiper/css/effect-coverflow";
 import { FaArrowRight } from "react-icons/fa";
+import PlantCareTips from "../components/Tips/PlantCardTips";
 
 const Home = () => {
   const allData = useLoaderData();
@@ -74,7 +75,7 @@ const Home = () => {
       </div>
 
       <h3 className="text-center text-3xl text-green-700 font-bold mt-20">
-        Our Best Selling Products
+        Top Rated Indoor Plants
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-14 pb-3">
         {sixData ? (
@@ -94,6 +95,9 @@ const Home = () => {
         >
           See more <FaArrowRight />
         </Link>
+      </div>
+      <div>
+        <PlantCareTips />
       </div>
     </div>
   );

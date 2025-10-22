@@ -34,10 +34,27 @@ const Navbar = () => {
       >
         My Profile
       </NavLink>
+      {/* {user &&
+        ((
+          <NavLink
+            className="mx-2 font-semibold text-green-500 text-lg"
+            // to={"/profile"}
+          >
+            About
+          </NavLink>
+        ),
+        (
+          <NavLink
+            className="mx-2 font-semibold text-green-500 text-lg"
+            // to={"/profile"}
+          >
+            Contact
+          </NavLink>
+        ))} */}
     </>
   );
   return (
-    <div className="navbar bg-green-100 px-10 shadow-sm">
+    <div className="navbar bg-green-100 px-5 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

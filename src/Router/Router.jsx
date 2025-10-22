@@ -8,10 +8,10 @@ import MainError from "../Error/MainError";
 import Home from "../pages/Home";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../pages/Login";
-import SignUp from "../pages/SignUp";
 import { Suspense } from "react";
 import Loading from "../Loading/Loading";
 import PlantsDetails from "../pages/PlantsDetails";
+import Registration from "../pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth/signup",
-        element: <SignUp />,
+        element: <Registration /> ,
       },
     ],
   },

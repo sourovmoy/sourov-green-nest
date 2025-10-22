@@ -5,16 +5,22 @@ const Navbar = () => {
   const links = (
     <>
       <NavLink
-        className="mx-2 font-bold text-green-500
+        className="mx-2 font-semibold text-green-500 text-lg
       "
         to={"/"}
       >
         Home
       </NavLink>
-      <NavLink className="mx-2 font-bold text-green-500" to={"/plants"}>
+      <NavLink
+        className="mx-2 font-semibold text-green-500 text-lg"
+        to={"/plants"}
+      >
         Plants
       </NavLink>
-      <NavLink className="mx-2 font-bold text-green-500" to={"/profile"}>
+      <NavLink
+        className="mx-2 font-semibold text-green-500 text-lg"
+        to={"/profile"}
+      >
         My Profile
       </NavLink>
     </>
@@ -47,7 +53,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to={"/"} className="font-bold text-xl text-green-500 sm:text-2xl">
+        <Link to={"/"} className="font-bold text-xl text-green-500 sm:text-3xl">
           GreenNest
         </Link>
       </div>

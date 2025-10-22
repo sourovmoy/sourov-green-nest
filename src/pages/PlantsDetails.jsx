@@ -1,7 +1,8 @@
 import React from "react";
 import { BiHeart } from "react-icons/bi";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaStar } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { LuLeafyGreen } from "react-icons/lu";
 import { Link, useLoaderData, useParams } from "react-router";
 import { toast } from "react-toastify";
 
@@ -18,7 +19,7 @@ const PlantsDetails = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-green-50 bg-green-900 py-10 px-6">
+      <div className="min-h-screen bg-green-50 bg-green-900 py-10 px-6 my-10 rounded-2xl">
         <div className="max-w-6xl mx-auto bg-white dark:bg-green-950 rounded-3xl shadow-xl overflow-hidden">
           <div className="flex items-center justify-between p-6 border-b border-green-100 dark:border-green-800">
             <Link
@@ -52,14 +53,17 @@ const PlantsDetails = () => {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-4">
-                <span className="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-semibold">
-                  🌿 {plant.category}
+                <span
+                  className="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 px-3 py-1 rounded-full text-sm font-semibold
+                flex items-center gap-2"
+                >
+                  <LuLeafyGreen className="h-5 w-5" /> {plant.category}
                 </span>
-                <span className="bg-yellow-100 dark:bg-yellow-700 text-yellow-700 dark:text-yellow-100 px-3 py-1 rounded-full text-sm font-semibold">
-                  ⭐ {plant.rating}
+                <span className="bg-yellow-100 dark:bg-yellow-700 text-yellow-700 dark:text-yellow-100 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
+                  <FaStar className="h-5 w-5" /> {plant.rating}
                 </span>
                 <span className="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-100 px-3 py-1 rounded-full text-sm font-semibold">
-                  🧤 Care: {plant.careLevel}
+                  Care: {plant.careLevel}
                 </span>
               </div>
 
@@ -89,7 +93,7 @@ const PlantsDetails = () => {
           </div>
         </div>
         <div className="">
-          <div className="card-body w-[30vw] mx-auto text-white font-medium text-xl">
+          <div className="card-body  w-[85vw] md:w-[30vw] mx-auto text-white font-medium text-xl">
             <h2 className="font-bold text-2xl text-center">
               Book Consultation
             </h2>
@@ -108,7 +112,7 @@ const PlantsDetails = () => {
                   placeholder="Inter Your Email"
                 />
 
-                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition mr-7 border-none">
+                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition mr-0 md:mr-8 border-none">
                   <HiOutlineShoppingBag className="w-5 h-5" /> Book Now
                 </button>
               </fieldset>

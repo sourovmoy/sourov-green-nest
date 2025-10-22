@@ -1,9 +1,11 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [show, setShow] = useState(false);
   const {
     signInWithEmailAndPasswordFunc,
     setUser,
@@ -52,14 +54,23 @@ const Login = () => {
                 placeholder="Your Email"
                 required
               />
-              <label className="label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="input"
-                placeholder="Password"
-                required
-              />
+              <div className="relative">
+                <label className="label">Password</label>
+                <input
+                  type={show ? "text" : "password"}
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  required
+                />
+                <span
+                  onClick={() => setShow(!show)}
+                  className="absolute mt-3 right-8"
+                >
+                  {show ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               <button className="btn bg-gradient-to-r from-[#3b8132] to-[#72bf6a] hover:scale-105 mt-4">
                 Login
               </button>

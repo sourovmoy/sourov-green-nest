@@ -2,8 +2,11 @@ import React, { use } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
+  const [show, setShow] = useState(false);
   const {
     createUserWithEmailAndPasswordFunc,
     updateProfileFunc,
@@ -85,15 +88,23 @@ const Registration = () => {
                 autoComplete="username"
                 required
               />
-              <label className="label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="input"
-                placeholder="Password"
-                autoComplete="current-password"
-                required
-              />
+              <div className="relative">
+                <label className="label">Password</label>
+                <input
+                  type={show ? "text" : "password"}
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  required
+                />
+                <span
+                  onClick={() => setShow(!show)}
+                  className="absolute mt-3 right-8"
+                >
+                  {show ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>

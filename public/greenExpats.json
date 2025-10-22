@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Ava Bloomfield",
+    "specialization": "Indoor Plant Care Specialist",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiEdEJvn1SW26poKM5zxPAgchDAVmVSI8KKg&s"
+  },
+  {
+    "id": 2,
+    "name": "Liam Evergreen",
+    "specialization": "Soil & Fertilizer Expert",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHiuU4xklXQ0J7uueelTS9wjjkE0OCZnPPcQ&s"
+  },
+  {
+    "id": 3,
+    "name": "Sophia Willow",
+    "specialization": "Succulent & Cactus Consultant",
+    "image": "https://m.media-amazon.com/images/S/amzn-author-media-prod/dmbrr536lipqk6bnavrao131mu._SY450_CR0%2C0%2C450%2C450_.jpg"
+  }
+]

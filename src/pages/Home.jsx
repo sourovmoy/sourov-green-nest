@@ -10,6 +10,7 @@ import "swiper/css/virtual";
 import "swiper/css/effect-coverflow";
 import { FaArrowRight } from "react-icons/fa";
 import PlantCareTips from "../components/Tips/PlantCardTips";
+import GreenExperts from "../components/GreenExpart/GreenExparts";
 
 const Home = () => {
   const allData = useLoaderData();
@@ -77,7 +78,7 @@ const Home = () => {
       <h3 className="text-center text-3xl text-green-700 font-bold mt-20">
         Top Rated Indoor Plants
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-14 pb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-14 pb-3">
         {sixData ? (
           sixData.map((data) => (
             <HomeCard key={data.plantId} data={data}></HomeCard>
@@ -98,6 +99,9 @@ const Home = () => {
       </div>
       <div>
         <PlantCareTips />
+      </div>
+      <div>
+        <GreenExperts />
       </div>
     </div>
   );

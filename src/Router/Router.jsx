@@ -23,13 +23,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense
-            fallback={
-              <div className="flex justify-center">
-                <span className="loading loading-spinner loading-xl"></span>
-              </div>
-            }
-          >
+          <Suspense fallback={<Loading />}>
             <Home />,
           </Suspense>
         ),
@@ -38,13 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/plants",
         element: (
-          <Suspense
-            fallback={
-              <div className="flex justify-center">
-                <span className="loading loading-spinner loading-xl"></span>
-              </div>
-            }
-          >
+          <Suspense fallback={<Loading />}>
             <Plants />
           </Suspense>
         ),
@@ -53,13 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/plants/:id",
         element: (
-          <Suspense
-            fallback={
-              <div className="flex justify-center">
-                <span className="loading loading-spinner loading-xl"></span>
-              </div>
-            }
-          >
+          <Suspense fallback={<Loading />}>
             <PlantsDetails />
           </Suspense>
         ),

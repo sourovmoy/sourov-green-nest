@@ -3,18 +3,23 @@ import { BiHeart } from "react-icons/bi";
 import { FaArrowLeft } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { Link, useLoaderData, useParams } from "react-router";
+import { toast } from "react-toastify";
 
 const PlantsDetails = () => {
   const { id } = useParams();
   const allData = useLoaderData();
   const plant = allData.find((p) => p.plantId === Number(id));
-  console.log(plant);
+
+  const handelBooking = (e) => {
+    e.preventDefault();
+    toast("Booking Consultation Complete");
+    e.target.reset();
+  };
 
   return (
     <div>
       <div className="min-h-screen bg-green-50 bg-green-900 py-10 px-6">
         <div className="max-w-6xl mx-auto bg-white dark:bg-green-950 rounded-3xl shadow-xl overflow-hidden">
-          {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-green-100 dark:border-green-800">
             <Link
               to={"/plants"}
@@ -28,9 +33,7 @@ const PlantsDetails = () => {
             </h1>
           </div>
 
-          {/* Main Details */}
           <div className="grid md:grid-cols-2 gap-10 p-8">
-            {/* Left Image */}
             <div className="flex justify-center items-center">
               <img
                 src={plant.image}
@@ -39,7 +42,6 @@ const PlantsDetails = () => {
               />
             </div>
 
-            {/* Right Info */}
             <div className="flex flex-col justify-center">
               <h2 className="text-3xl font-bold text-green-800 dark:text-green-100 mb-3">
                 {plant.plantName}
@@ -83,20 +85,34 @@ const PlantsDetails = () => {
                   {plant.providerName}
                 </span>
               </p>
-
-              {/* Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <button className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition">
-                  <HiOutlineShoppingBag className="w-5 h-5" />
-                  Buy Now
-                </button>
-
-                <button className="flex items-center gap-2 bg-pink-100 text-pink-600 dark:bg-pink-800 dark:text-pink-200 px-6 py-3 rounded-xl font-semibold shadow hover:bg-pink-200 dark:hover:bg-pink-700 transition">
-                  <BiHeart className="w-5 h-5" />
-                  Add to Wishlist
-                </button>
-              </div>
             </div>
+          </div>
+        </div>
+        <div className="">
+          <div className="card-body w-[30vw] mx-auto text-white font-medium text-xl">
+            <h2 className="font-bold text-2xl text-center">
+              Book Consultation
+            </h2>
+            <form onSubmit={handelBooking}>
+              <fieldset className="fieldset">
+                <label className="label">Name</label>
+                <input
+                  type="text"
+                  className="input text-green-700"
+                  placeholder="Inter Your Name"
+                />
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  className="input text-green-700"
+                  placeholder="Inter Your Email"
+                />
+
+                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition mr-7 border-none">
+                  <HiOutlineShoppingBag className="w-5 h-5" /> Book Now
+                </button>
+              </fieldset>
+            </form>
           </div>
         </div>
       </div>

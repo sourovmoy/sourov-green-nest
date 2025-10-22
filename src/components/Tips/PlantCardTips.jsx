@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../Loading/Loading";
 
 const PlantCareTips = () => {
   const [tips, setTips] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    setLoader(true);
     fetch("/plantsTips.json")
       .then((res) => res.json())
       .then((data) => setTips(data));
+    setTimeout(() => setLoader(false), 700);
   }, []);
 
+  if (loader) {
+    return <Loading />;
+  }
+
   return (
-    <div className="bg-gradient-to-b from-green-50 to-white py-16 px-6">
+    <div className=" py-16 px-6">
       <h1 className="text-3xl font-bold text-center text-green-700 mb-10">
         🌿 Plant Care Tips
       </h1>
@@ -19,7 +27,7 @@ const PlantCareTips = () => {
         {tips.map((tip) => (
           <div
             key={tip.id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 text-center border border-green-100"
+            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 text-center border border-green-100 hover:scale-104"
           >
             <div className="text-5xl mb-4">{tip.icon}</div>
             <h2 className="text-xl font-semibold text-green-800 mb-2">

@@ -22,6 +22,14 @@ const Registration = () => {
     const email = e.target.email?.value;
     const photoURL = e.target.photo?.value;
     const password = e.target.password?.value;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must have an Uppercase, Lowercase, Lowercase letter in the password"
+      );
+      return;
+    }
+
     createUserWithEmailAndPasswordFunc(email, password)
       .then((res) => {
         // setUser(res.user);
@@ -74,6 +82,7 @@ const Registration = () => {
                 name="email"
                 className="input"
                 placeholder="Your Email"
+                autoComplete="username"
                 required
               />
               <label className="label">Password</label>
@@ -82,6 +91,7 @@ const Registration = () => {
                 name="password"
                 className="input"
                 placeholder="Password"
+                autoComplete="current-password"
                 required
               />
               <div>

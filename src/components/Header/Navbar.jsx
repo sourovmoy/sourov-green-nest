@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, signOutFunc, setUser, spinner } = use(AuthContext);
-  // const { email, displayName, photoURL } = user;
-  console.log(user);
 
   const handelSignOut = () => {
     signOutFunc();
@@ -93,7 +91,7 @@ const Navbar = () => {
         )}
         <div>
           {user ? (
-            <div className="dropdown ml-2">
+            <div className="dropdown dropdown dropdown-end ml-2">
               <div tabIndex={0} role="button" className=" rounded-full">
                 <img
                   className="rounded-full object-fill h-10 w-11 outline-5 outline-green-200"
@@ -103,10 +101,12 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                className="dropdown-content menu text-white font-semibold bg-gradient-to-r from-[#3b8132] to-[#72bf6a] rounded-box z-1 w-56 p-2 shadow-sm"
               >
-                <h2>{user?.displayName}</h2>
-                <p>{user?.email}</p>
+                <h2 className="shadow-lg py-2 px-1 rounded-lg mb-2">
+                  {user?.displayName}
+                </h2>
+                <p className="shadow-lg py-2 px-1 rounded-lg">{user?.email}</p>
               </ul>
             </div>
           ) : (

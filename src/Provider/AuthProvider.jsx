@@ -12,7 +12,6 @@ import { auth } from "../Firebase/firebase.config";
 import { useEffect, useState } from "react";
 
 const AuthProvider = ({ children }) => {
-  // const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
   const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");

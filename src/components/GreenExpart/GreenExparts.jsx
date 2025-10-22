@@ -8,7 +8,6 @@ const GreenExperts = () => {
       .then((res) => res.json())
       .then((data) => setExperts(data));
   }, []);
-  console.log(experts);
 
   return (
     <div className="py-14 bg-green-50 transition-colors duration-500">

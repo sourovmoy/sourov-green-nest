@@ -12,6 +12,7 @@ import { Suspense } from "react";
 import Loading from "../Loading/Loading";
 import PlantsDetails from "../pages/PlantsDetails";
 import Registration from "../pages/Registration";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <PrivetRoute>
+            <Profile />
+          </PrivetRoute>
+        ),
       },
       {
         path: "*",
@@ -67,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth/signup",
-        element: <Registration /> ,
+        element: <Registration />,
       },
     ],
   },

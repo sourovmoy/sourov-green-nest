@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,12 @@ const Login = () => {
     user,
     setSpinner,
   } = use(AuthContext);
+
+  const location = useLocation();
+  const whereFrom = location.state || "/";
+  const navigate = useNavigate();
+  console.log(location, whereFrom);
+
   const handelSignin = (e) => {
     setUser(null);
     setError("");
@@ -24,6 +30,7 @@ const Login = () => {
         toast.success("Successfully Sign Up");
         e.target.reset();
         setSpinner(false);
+        navigate(whereFrom);
       })
       .catch((err) => setError(err.message));
     console.log(email, password);

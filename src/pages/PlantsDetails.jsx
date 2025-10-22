@@ -12,7 +12,7 @@ const PlantsDetails = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-green-50 dark:bg-gray-900 py-10 px-6">
+      <div className="min-h-screen bg-green-50 bg-green-900 py-10 px-6">
         <div className="max-w-6xl mx-auto bg-white dark:bg-green-950 rounded-3xl shadow-xl overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-green-100 dark:border-green-800">

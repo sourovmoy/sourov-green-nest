@@ -2,6 +2,10 @@
 @plugin "daisyui";
 
 a.active {
-  color: #632ee3;
+  color: #3b8132;
   text-decoration: underline;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #166534;
 }

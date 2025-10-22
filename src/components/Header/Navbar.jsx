@@ -4,19 +4,23 @@ import { Link, NavLink } from "react-router";
 const Navbar = () => {
   const links = (
     <>
-      <NavLink className="mx-2 font-bold" to={"/"}>
+      <NavLink
+        className="mx-2 font-bold text-green-500
+      "
+        to={"/"}
+      >
         Home
       </NavLink>
-      <NavLink className="mx-2 font-bold" to={"/plants"}>
+      <NavLink className="mx-2 font-bold text-green-500" to={"/plants"}>
         Plants
       </NavLink>
-      <NavLink className="mx-2 font-bold" to={"/profile"}>
+      <NavLink className="mx-2 font-bold text-green-500" to={"/profile"}>
         My Profile
       </NavLink>
     </>
   );
   return (
-    <div className="navbar bg-base-100 px-10 shadow-sm">
+    <div className="navbar bg-green-100 px-10 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,7 +47,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="font-bold text-xl sm:text-2xl">GreenNest</a>
+        <Link to={"/"} className="font-bold text-xl text-green-500 sm:text-2xl">
+          GreenNest
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -51,7 +57,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <Link
           to="/auth/login"
-          className="btn bg-gradient-to-l from-[#632ee3] to-[#9f62f2] hover:scale-105 text-white"
+          className="btn bg-gradient-to-l from-[#3b8132] to-[#72bf6a] hover:scale-105 text-white"
         >
           Log in
         </Link>

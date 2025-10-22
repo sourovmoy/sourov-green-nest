@@ -1,38 +1,114 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Registration = () => {
+  const {
+    createUserWithEmailAndPasswordFunc,
+    updateProfileFunc,
+    signInWithPopupFunc,
+    setUser,
+    setError,
+    error,
+    user,
+    setSpinner,
+  } = use(AuthContext);
+  const handelRegistration = (e) => {
+    setUser(null);
+    setError("");
+    e.preventDefault();
+    const displayName = e.target.name?.value;
+    const email = e.target.email?.value;
+    const photoURL = e.target.photo?.value;
+    const password = e.target.password?.value;
+    createUserWithEmailAndPasswordFunc(email, password)
+      .then((res) => {
+        // setUser(res.user);
+        toast("Successfully Sign Up");
+        e.target.reset();
+        setSpinner(false);
+        updateProfileFunc(displayName, photoURL).then(() => {
+          console.log(res);
+        });
+      })
+      .catch((err) => setError(err.message));
+  };
+
+  const handelSignInWithGoogle = () => {
+    signInWithPopupFunc()
+      .then((res) => {
+        console.log(res.user);
+        setUser(res.user);
+      })
+      .catch();
+  };
   return (
     <div className="flex justify-center items-center my-5">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body bg-green-50">
-          <h3 className="text-3xl font-bold text-center">Registration</h3>
-          <form>
+          <h3 className="text-3xl font-bold text-center text-green-500">
+            Registration
+          </h3>
+          <form onSubmit={handelRegistration}>
             <fieldset className="fieldset">
               <label className="label">Name</label>
-              <input type="text" className="input" placeholder="Your Name" />
+              <input
+                name="name"
+                type="text"
+                className="input"
+                placeholder="Your Name"
+                required
+              />
               <label className="label">Photo URL</label>
               <input
                 type="text"
+                name="photo"
                 className="input"
                 placeholder="Your Photo URL"
+                required
               />
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Your Email" />
+              <input
+                type="email"
+                name="email"
+                className="input"
+                placeholder="Your Email"
+                required
+              />
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                className="input"
+                placeholder="Password"
+                required
+              />
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn bg-gradient-to-r from-[#3b8132] to-[#72bf6a] hover:scale-105 mt-4">
+                Login
+              </button>
             </fieldset>
           </form>
           <Link to={"/auth/login"}>
             Already Have an Account ?{" "}
             <span className="text-green-500">Log in</span>
           </Link>
+          {user && <p className="text-green-500">Successfully Sign Up</p>}
+          {error && <p className="text-red-500">{error}</p>}
+
+          <div className="flex justify-between items-center">
+            <p className="border-b ml-14"></p>
+            <p className="text-center">or</p>
+            <p className="border-b mr-14"></p>
+          </div>
           <div className="flex justify-center mt-5">
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handelSignInWithGoogle}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

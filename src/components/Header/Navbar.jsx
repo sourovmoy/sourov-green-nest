@@ -1,7 +1,20 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../Provider/AuthContext";
+import { FaUserCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, signOutFunc, setUser, spinner } = use(AuthContext);
+  // const { email, displayName, photoURL } = user;
+  console.log(user);
+
+  const handelSignOut = () => {
+    signOutFunc();
+    toast("Sign Out Successfully");
+    setUser(null);
+  };
+
   const links = (
     <>
       <NavLink
@@ -60,13 +73,46 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <Link
-          to="/auth/login"
-          className="btn bg-gradient-to-l from-[#3b8132] to-[#72bf6a] hover:scale-105 text-white"
-        >
-          Log in
-        </Link>
+      <div className="navbar-end items-center">
+        {spinner ? (
+          <span className="loading loading-spinner loading-xl"></span>
+        ) : user ? (
+          <button
+            onClick={handelSignOut}
+            className="btn bg-gradient-to-l from-[#3b8132] to-[#72bf6a] hover:scale-105 text-white"
+          >
+            Sign Out
+          </button>
+        ) : (
+          <Link
+            to="/auth/login"
+            className="btn bg-gradient-to-l from-[#3b8132] to-[#72bf6a] hover:scale-105 text-white"
+          >
+            Log in
+          </Link>
+        )}
+        <div>
+          {user ? (
+            <div className="dropdown ml-2">
+              <div tabIndex={0} role="button" className=" rounded-full">
+                <img
+                  className="rounded-full object-fill h-10 w-11 outline-5 outline-green-200"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              >
+                <h2>{user?.displayName}</h2>
+                <p>{user?.email}</p>
+              </ul>
+            </div>
+          ) : (
+            <FaUserCircle className="ml-2 h-10 w-10" />
+          )}
+        </div>
       </div>
     </div>
   );

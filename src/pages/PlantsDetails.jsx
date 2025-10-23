@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import { FaArrowLeft, FaStar } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { LuLeafyGreen } from "react-icons/lu";
 import { Link, useLoaderData, useParams } from "react-router";
 import { toast } from "react-toastify";
+import ErrorPage from "../Error/ErrorPage";
+import { addPlants, getPlants } from "../LocalStorage/LocalStorage";
 
 const PlantsDetails = () => {
+  const [click, setClick] = useState(false);
   const { id } = useParams();
   const allData = useLoaderData();
+
+  useEffect(() => {
+    const bookingPlants = getPlants();
+    const alreadyHave = bookingPlants.some((p) => p.plantId == id);
+    if (alreadyHave) {
+      setClick(true);
+    }
+  }, [id]);
+
   const plant = allData.find((p) => p.plantId === Number(id));
 
   const handelBooking = (e) => {
     e.preventDefault();
-    toast("Booking Consultation Complete");
+    addPlants(plant);
     e.target.reset();
+    setClick(true);
+    if (click) {
+      return;
+    } else {
+      toast("Booking Consultation Complete");
+    }
   };
 
+  if (Object.keys(plant).length === 0) {
+    return <ErrorPage />;
+  }
   return (
     <div>
       <div className="min-h-screen bg-green-50 bg-green-900 py-10 px-6 my-10 rounded-2xl">
@@ -112,8 +133,15 @@ const PlantsDetails = () => {
                   placeholder="Inter Your Email"
                 />
 
-                <button className="btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition  border-none">
-                  <HiOutlineShoppingBag className="w-5 h-5" /> Book Now
+                <button
+                  disabled={click}
+                  // onClick={() => handelBooking(true)}
+                  className={`btn mt-4  bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:bg-green-700 transition  border-none ${
+                    click && "opacity-25"
+                  }`}
+                >
+                  <HiOutlineShoppingBag className="w-5 h-5" />{" "}
+                  {click ? "Booked" : "Book Now"}
                 </button>
               </fieldset>
             </form>

@@ -34,23 +34,14 @@ const Navbar = () => {
       >
         My Profile
       </NavLink>
-      {/* {user &&
-        ((
-          <NavLink
-            className="mx-2 font-semibold text-green-500 text-lg"
-            // to={"/profile"}
-          >
-            About
-          </NavLink>
-        ),
-        (
-          <NavLink
-            className="mx-2 font-semibold text-green-500 text-lg"
-            // to={"/profile"}
-          >
-            Contact
-          </NavLink>
-        ))} */}
+      {user && (
+        <NavLink
+          className="mx-2 font-semibold text-green-500 text-lg"
+          to={"/booked"}
+        >
+          Booked plants
+        </NavLink>
+      )}
     </>
   );
   return (

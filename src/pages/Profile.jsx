@@ -4,8 +4,7 @@ import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 
 const Profile = () => {
-  const { user, error, updateProfileFunc, setUser, setSpinner } =
-    use(AuthContext);
+  const { user, error, setUser, setSpinner } = use(AuthContext);
   const handleUpdate = (e) => {
     e.preventDefault();
     const newName = e.target.updateName.value;

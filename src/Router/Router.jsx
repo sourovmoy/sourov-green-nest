@@ -13,6 +13,7 @@ import Loading from "../Loading/Loading";
 import PlantsDetails from "../pages/PlantsDetails";
 import Registration from "../pages/Registration";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import BookedPlants from "../pages/BookedPlants";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <Profile />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/booked",
+        element: (
+          <PrivetRoute>
+            <BookedPlants />
           </PrivetRoute>
         ),
       },

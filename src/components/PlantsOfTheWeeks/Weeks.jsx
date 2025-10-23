@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/virtual";
 import { FaStar } from "react-icons/fa";
 import { Atom } from "react-loading-indicators";
+import { Link } from "react-router";
 
 const Weeks = ({ allData }) => {
   if (!allData) {
@@ -36,10 +37,15 @@ const Weeks = ({ allData }) => {
             <h3 className="text-2xl font-semibold text-green-800">
               {randomPlant.plantName}
             </h3>
-            <p className="text-gray-600 mt-2">{randomPlant.description}</p>
-            <button className="mt-5 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg transition">
+            <p className="text-gray-600 mt-2 mb-10">
+              {randomPlant.description}
+            </p>
+            <Link
+              to={`/plants/${randomPlant.plantId}`}
+              className="mt-5 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+            >
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
         <Swiper

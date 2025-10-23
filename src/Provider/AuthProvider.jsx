@@ -35,10 +35,7 @@ const AuthProvider = ({ children }) => {
 
   const updateProfileFunc = (displayName, photoURL) => {
     setSpinner(true);
-    return updateProfile(auth.currentUser, {
-      displayName,
-      photoURL,
-    });
+    return updateProfile(auth.currentUser, { displayName, photoURL });
   };
 
   const sendPasswordResetEmailFunc = (email) => {

@@ -18,7 +18,7 @@ const PrivetRoute = ({ children }) => {
     return <Navigate to={"/auth/login"} state={location.pathname}></Navigate>;
   }
 
-  return children;
+  return <div>{children}</div>;
 };
 
 export default PrivetRoute;

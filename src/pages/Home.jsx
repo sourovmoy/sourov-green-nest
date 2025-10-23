@@ -2,7 +2,8 @@ import React from "react";
 import { Link, useLoaderData } from "react-router";
 import HomeCard from "../components/HomeCard/HomeCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Virtual, EffectCoverflow } from "swiper/modules";
+import { Autoplay, Virtual, EffectCoverflow } from "swiper/modules";
+import Marquee from "react-fast-marquee";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -42,7 +43,7 @@ const Home = () => {
             disableOnInteraction: false,
           }}
           pagination={{ clickable: true }}
-          modules={[Virtual, Autoplay, Pagination, EffectCoverflow]}
+          modules={[Virtual, Autoplay, EffectCoverflow]}
           breakpoints={{
             320: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
@@ -74,6 +75,17 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="my-4 font-medium text-green-700 bg-gradient-to-r from-[#cce7c9] to-[#acd8a7] rounded-md p-3">
+          <Marquee>
+            <h2>
+              GreenNest is an elegant single-page web application built for
+              plant lovers who want to nurture and decorate their homes with
+              healthy indoor plants. The platform allows users to explore plant
+              care guides, buy plants, and book expert consultations — ensuring
+              a greener and healthier living space during any season.
+            </h2>
+          </Marquee>
+        </div>
       </div>
 
       <h3 className="text-center text-3xl text-green-700 font-bold mt-20">

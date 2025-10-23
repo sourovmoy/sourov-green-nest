@@ -12,7 +12,6 @@ const Login = () => {
     setError,
     error,
     user,
-    setSpinner,
   } = use(AuthContext);
 
   const location = useLocation();
@@ -29,12 +28,12 @@ const Login = () => {
         setUser(res.user);
         toast.success("Successfully Sign Up");
         e.target.reset();
-        setSpinner(false);
+        
         navigate(whereFrom);
       })
       .catch((err) => {
         setError(err.message);
-        setSpinner(false);
+        
       });
   };
   return (

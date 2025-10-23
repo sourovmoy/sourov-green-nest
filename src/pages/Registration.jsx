@@ -20,6 +20,7 @@ const Registration = () => {
     error,
     user,
     setSpinner,
+    spinner,
   } = use(AuthContext);
   const handelRegistration = (e) => {
     setUser(null);
@@ -43,10 +44,13 @@ const Registration = () => {
         toast("Successfully Sign Up");
         navigate("/");
         e.target.reset();
-        updateProfileFunc(displayName, photoURL).then(() => {
-          console.log(res);
-          setSpinner(false);
-        });
+        updateProfileFunc(displayName, photoURL)
+          .then(() => {
+            setSpinner(false);
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
       })
       .catch((err) => {
         setSpinner(false);

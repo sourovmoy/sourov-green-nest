@@ -1,24 +1,32 @@
 import React, { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
 
 const Profile = () => {
-  const { user, error, updateProfileFunc } = use(AuthContext);
+  const { user, error, updateProfileFunc, setUser, setSpinner } =
+    use(AuthContext);
   const handleUpdate = (e) => {
     e.preventDefault();
     const newName = e.target.updateName.value;
     const newPhoto = e.target.updatePhoto.value;
-    updateProfileFunc(newName, newPhoto)
+    updateProfile(user, { displayName: newName, photoURL: newPhoto })
       .then((res) => {
         toast.success("Update Your Profile Successfully");
-        console.log(res);
+        setUser({
+          ...user,
+          displayName: newName,
+          photoURL: newPhoto,
+        });
+
+        e.target.reset();
       })
-      .catch((err) => toast.error(err.message));
+      .finally(() => setSpinner(false));
   };
 
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center bg-green-50 dark:bg-gray-900 p-6">
+      <div className="min-h-screen flex items-center justify-center bg-green-50 p-6">
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 w-full max-w-md">
           <h2 className="text-3xl font-bold text-center text-green-700 dark:text-green-400 mb-6">
             User Profile
@@ -46,6 +54,7 @@ const Profile = () => {
               <input
                 type="text"
                 name="updateName"
+                // defaultValue={user.displayName}
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-gray-800 dark:text-white"
               />
             </div>
@@ -57,6 +66,7 @@ const Profile = () => {
               <input
                 type="text"
                 name="updatePhoto"
+                // defaultValue={user.photoURL}
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-gray-800 dark:text-white"
               />
             </div>

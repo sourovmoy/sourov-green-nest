@@ -27,7 +27,7 @@ const Weeks = ({ allData }) => {
           Plant of the Week
         </h2>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-20 my-5">
           <img
             src={randomPlant.image}
             alt="Snake Plant"

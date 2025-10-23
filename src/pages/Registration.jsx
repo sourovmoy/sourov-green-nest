@@ -1,5 +1,5 @@
 import React, { use, useRef } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -8,6 +8,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Registration = () => {
   const [show, setShow] = useState(false);
   const emailRef = useRef(null);
+  const navigate = useNavigate();
+
   const {
     createUserWithEmailAndPasswordFunc,
     updateProfileFunc,
@@ -39,19 +41,24 @@ const Registration = () => {
       .then((res) => {
         // setUser(res.user);
         toast("Successfully Sign Up");
+        navigate("/");
         e.target.reset();
-        setSpinner(false);
         updateProfileFunc(displayName, photoURL).then(() => {
-          toast.success("Profile Update Complete");
+          console.log(res);
+          setSpinner(false);
         });
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setSpinner(false);
+        setError(err.message);
+      });
   };
 
   const handelSignInWithGoogle = () => {
     signInWithPopupFunc()
       .then((res) => {
         setUser(res.user);
+        navigate("/");
       })
       .catch();
   };

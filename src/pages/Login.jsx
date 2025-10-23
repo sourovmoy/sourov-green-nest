@@ -32,8 +32,10 @@ const Login = () => {
         setSpinner(false);
         navigate(whereFrom);
       })
-      .catch((err) => setError(err.message));
-    console.log(email, password);
+      .catch((err) => {
+        setError(err.message);
+        setSpinner(false);
+      });
   };
   return (
     <div className="h-[80vh] flex justify-center items-center">

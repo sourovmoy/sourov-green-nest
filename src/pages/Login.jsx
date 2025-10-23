@@ -18,8 +18,6 @@ const Login = () => {
   const location = useLocation();
   const whereFrom = location.state || "/";
   const navigate = useNavigate();
-  console.log(location, whereFrom);
-
   const handelSignin = (e) => {
     setUser(null);
     setError("");

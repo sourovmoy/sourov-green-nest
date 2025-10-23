@@ -18,8 +18,8 @@ const BookedPlants = () => {
   };
 
   return (
-    <div>
-      <h3 className="text-center font-bold text-3xl text-green-700 mt-10 mb-5 h-screen">
+    <div className="h-screen">
+      <h3 className="text-center font-bold text-3xl text-green-700 mt-10 mb-5">
         Your Booking Lists ({booked.length})
       </h3>
       <div className="">

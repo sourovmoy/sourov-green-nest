@@ -1,5 +1,5 @@
 import React from "react";
-import { FaDownload, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 const BookingCard = ({ plants, handelRemove }) => {
   return (

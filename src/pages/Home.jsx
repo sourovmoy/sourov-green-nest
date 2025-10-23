@@ -11,6 +11,7 @@ import "swiper/css/effect-coverflow";
 import { FaArrowRight } from "react-icons/fa";
 import PlantCareTips from "../components/Tips/PlantCardTips";
 import GreenExperts from "../components/GreenExpart/GreenExparts";
+import Weeks from "../components/PlantsOfTheWeeks/Weeks";
 
 const Home = () => {
   const allData = useLoaderData();
@@ -99,6 +100,9 @@ const Home = () => {
       </div>
       <div>
         <PlantCareTips />
+      </div>
+      <div>
+        <Weeks allData={allData}></Weeks>
       </div>
       <div>
         <GreenExperts />

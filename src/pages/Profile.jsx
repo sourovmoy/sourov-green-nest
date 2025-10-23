@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 const Profile = () => {
   const { user, error, updateProfileFunc } = use(AuthContext);
-  console.log(user);
   const handleUpdate = (e) => {
     e.preventDefault();
     const newName = e.target.updateName.value;

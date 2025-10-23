@@ -9,3 +9,7 @@ a.active {
 .swiper-button-next {
   color: #166534;
 }
+
+.swiper-wrapper {
+  transition-timing-function: linear;
+}

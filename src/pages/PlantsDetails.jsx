@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import { FaArrowLeft, FaStar } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { LuLeafyGreen } from "react-icons/lu";
-import { Link, useLoaderData, useParams } from "react-router";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import ErrorPage from "../Error/ErrorPage";
 import { addPlants, getPlants } from "../LocalStorage/LocalStorage";
+import { AuthContext } from "../Provider/AuthContext";
 
 const PlantsDetails = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const { id } = useParams();
   const allData = useLoaderData();
@@ -25,13 +28,17 @@ const PlantsDetails = () => {
 
   const handelBooking = (e) => {
     e.preventDefault();
+    if (!user) {
+      toast.error("Login first");
+      return navigate("/auth/login");
+    }
     addPlants(plant);
     e.target.reset();
     setClick(true);
     if (click) {
       return;
     } else {
-      toast("Booking Consultation Complete");
+      toast("Booking Complete");
     }
   };
 

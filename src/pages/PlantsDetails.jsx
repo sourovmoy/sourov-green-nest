@@ -130,13 +130,13 @@ const PlantsDetails = () => {
                 <label className="label">Name</label>
                 <input
                   type="text"
-                  className="input text-green-700"
+                  className="input text-green-700 w-full"
                   placeholder="Inter Your Name"
                 />
                 <label className="label">Email</label>
                 <input
                   type="email"
-                  className="input text-green-700"
+                  className="input text-green-700 w-full"
                   placeholder="Inter Your Email"
                 />
 

@@ -4,9 +4,10 @@ import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 
 const Profile = () => {
-  const { user, error, setUser, setSpinner } = use(AuthContext);
+  const { user, error, setError, setUser, setSpinner } = use(AuthContext);
   const handleUpdate = (e) => {
-    e.preventDefault();
+    setError("");
+    // e.preventDefault();
     const newName = e.target.updateName.value;
     const newPhoto = e.target.updatePhoto.value;
     updateProfile(user, { displayName: newName, photoURL: newPhoto })
@@ -37,7 +38,7 @@ const Profile = () => {
                 user.photoURL || "https://i.ibb.co/6v1Yj3D/default-avatar.png"
               }
               alt="User"
-              className="w-28 h-28 rounded-full border-4 border-green-500 shadow-md object-cover"
+              className="w-50 h-50 rounded-full border-4 border-green-500 shadow-md object-cover"
             />
             <h3 className="text-xl font-semibold text-green-700 mt-3">
               {user.displayName || "Unnamed User"}

@@ -31,10 +31,15 @@ const Registration = () => {
     const photoURL = e.target.photo?.value;
     const password = e.target.password?.value;
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    const photoURLRegex = /^https:\/\/.*\.(png|jpg|jpeg|gif|webp|svg)$/i;
     if (!passwordRegex.test(password)) {
       toast.error(
         "Password must have an Uppercase, Lowercase, Lowercase letter in the password"
       );
+      return;
+    }
+    if (!photoURLRegex.test(photoURL)) {
+      toast.error("Inter Correct ImageURL");
       return;
     }
 

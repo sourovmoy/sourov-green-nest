@@ -29,8 +29,7 @@ const PlantsDetails = () => {
   const handelBooking = (e) => {
     e.preventDefault();
     if (!user) {
-      toast.error("Login first");
-      return navigate("/auth/login");
+      return toast.error("Login first");
     }
     addPlants(plant);
     e.target.reset();

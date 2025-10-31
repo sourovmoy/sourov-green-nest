@@ -1,13 +1,15 @@
-import React, { use, useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const emailRef = useRef(null);
   const [show, setShow] = useState(false);
   const {
     signInWithEmailAndPasswordFunc,
+    sendPasswordResetEmailFunc,
     setUser,
     setError,
     error,
@@ -37,6 +39,19 @@ const Login = () => {
         setError(err.message);
       });
   };
+  const handelForgetPassword = () => {
+    const email = emailRef.current.value;
+
+    sendPasswordResetEmailFunc(email)
+      .then((res) => {
+        console.log(res);
+        toast.success("Password Reset Email sent");
+      })
+      .catch((err) => {
+        toast.success(err.message);
+        setSpinner(false);
+      });
+  };
   return (
     <div className="h-[80vh] flex justify-center items-center">
       <div className="card bg-green-50 w-full max-w-sm shrink-0 shadow-2xl">
@@ -48,6 +63,7 @@ const Login = () => {
             <fieldset className="fieldset">
               <label className="label">Email</label>
               <input
+                ref={emailRef}
                 type="email"
                 name="email"
                 className="input"
@@ -70,6 +86,17 @@ const Login = () => {
                 >
                   {show ? <FaEyeSlash /> : <FaEye />}
                 </span>
+              </div>
+              <div>
+                <Link
+                  target="_blank"
+                  to={"https://mail.google.com/mail/u/0/#inbox"}
+                  type="button"
+                  onClick={handelForgetPassword}
+                  className="link link-hover"
+                >
+                  Forgot password?
+                </Link>
               </div>
               <button className="btn bg-gradient-to-r from-[#3b8132] to-[#72bf6a] hover:scale-105 mt-4">
                 Login

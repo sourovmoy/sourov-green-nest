@@ -4,6 +4,7 @@ import HomeCard from "../components/HomeCard/HomeCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Virtual, EffectCoverflow } from "swiper/modules";
 import Marquee from "react-fast-marquee";
+import * as motion from "motion/react-client"; // ✅ import motion
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -94,7 +95,18 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-14 pb-3">
         {sixData ? (
           sixData.map((data) => (
-            <HomeCard key={data.plantId} data={data}></HomeCard>
+            <motion.div
+              key={data.plantId}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 1,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
+            >
+              <HomeCard key={data.plantId} data={data}></HomeCard>
+            </motion.div>
           ))
         ) : (
           <div className="text-4xl flex justify-center">

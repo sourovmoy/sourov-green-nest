@@ -1,4 +1,4 @@
-import React, { use, useRef } from "react";
+import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
@@ -7,20 +7,18 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
   const [show, setShow] = useState(false);
-  const emailRef = useRef(null);
   const navigate = useNavigate();
 
   const {
     createUserWithEmailAndPasswordFunc,
     updateProfileFunc,
     signInWithPopupFunc,
-    sendPasswordResetEmailFunc,
+
     setUser,
     setError,
     error,
     user,
     setSpinner,
-    spinner,
   } = use(AuthContext);
   const handelRegistration = (e) => {
     setUser(null);
@@ -72,17 +70,6 @@ const Registration = () => {
       .catch();
   };
 
-  const handelForgetPassword = () => {
-    const email = emailRef.current.value;
-
-    sendPasswordResetEmailFunc(email)
-      .then((res) => {
-        console.log(res);
-        toast.success("Password Reset Email sent");
-      })
-      .catch((err) => toast.success(err.message));
-  };
-
   return (
     <div className="flex justify-center items-center my-5">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -110,7 +97,6 @@ const Registration = () => {
               />
               <label className="label">Email</label>
               <input
-                ref={emailRef}
                 type="email"
                 name="email"
                 className="input"
@@ -134,15 +120,6 @@ const Registration = () => {
                 >
                   {show ? <FaEyeSlash /> : <FaEye />}
                 </span>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  onClick={handelForgetPassword}
-                  className="link link-hover"
-                >
-                  Forgot password?
-                </button>
               </div>
               <button className="btn bg-gradient-to-r from-[#3b8132] to-[#72bf6a] hover:scale-105 mt-4">
                 Login

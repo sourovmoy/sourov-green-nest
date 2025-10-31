@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../../Loading/Loading";
+import * as motion from "motion/react-client";
 
 const PlantCareTips = () => {
   const [tips, setTips] = useState([]);
@@ -25,19 +26,30 @@ const PlantCareTips = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {tips.map((tip) => (
-          <div
+          <motion.div
             key={tip.id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 text-center border border-green-100 hover:scale-104"
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true }}
           >
-            <div className="text-5xl mb-4">{tip.icon}</div>
-            <h2 className="text-xl font-semibold text-green-800 mb-2">
-              {tip.title}
-            </h2>
-            <p className="text-gray-600 text-sm mb-3">{tip.description}</p>
-            <span className="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">
-              {tip.category}
-            </span>
-          </div>
+            <div
+              key={tip.id}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 text-center border border-green-100 hover:scale-104"
+            >
+              <div className="text-5xl mb-4">{tip.icon}</div>
+              <h2 className="text-xl font-semibold text-green-800 mb-2">
+                {tip.title}
+              </h2>
+              <p className="text-gray-600 text-sm mb-3">{tip.description}</p>
+              <span className="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">
+                {tip.category}
+              </span>
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>

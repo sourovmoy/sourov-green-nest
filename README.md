@@ -88,3 +88,149 @@ Users can explore plant care guides, buy plants, and book expert consultations, 
 ```bash
 git clone https://github.com/sourovmoy/sourov-green-nest
 ```
+
+2. Navigate to the project directory:
+
+```bash
+cd sourov-green-nest
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Create a `.env` file in the root directory and add your Firebase configuration:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` with your Firebase credentials:
+
+```env
+VITE_apiKey=your_firebase_api_key
+VITE_authDomain=your_project.firebaseapp.com
+VITE_projectId=your_project_id
+VITE_storageBucket=your_project.firebasestorage.app
+VITE_messagingSenderId=your_messaging_sender_id
+VITE_appId=your_app_id
+```
+
+5. Start the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🚀 Deployment to Vercel
+
+This project is ready for deployment on Vercel. Follow these steps:
+
+### Option 1: Deploy via Vercel CLI
+
+1. Install Vercel CLI globally:
+
+```bash
+npm install -g vercel
+```
+
+2. Login to your Vercel account:
+
+```bash
+vercel login
+```
+
+3. Deploy the project:
+
+```bash
+vercel
+```
+
+4. Follow the prompts and add your environment variables in the Vercel dashboard.
+
+### Option 2: Deploy via Vercel Dashboard
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and sign in
+3. Click "New Project" and import your GitHub repository
+4. Vercel will automatically detect it's a Vite project
+5. Add your environment variables in the "Environment Variables" section:
+   - `VITE_apiKey`
+   - `VITE_authDomain`
+   - `VITE_projectId`
+   - `VITE_storageBucket`
+   - `VITE_messagingSenderId`
+   - `VITE_appId`
+6. Click "Deploy"
+
+### Environment Variables Setup
+
+Make sure to add all your Firebase environment variables in the Vercel dashboard:
+
+1. Go to your project settings in Vercel
+2. Navigate to "Environment Variables"
+3. Add each `VITE_*` variable with its corresponding value
+4. Redeploy if necessary
+
+---
+
+## 📁 Project Structure
+
+```
+sourov-green-nest/
+├── public/
+│   ├── data.json
+│   ├── greenExpats.json
+│   ├── plantsTips.json
+│   └── _redirects
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── Provider/
+│   ├── Firebase/
+│   └── ...
+├── .env.example
+├── vercel.json
+└── package.json
+```
+
+---
+
+## 🔧 Build Configuration
+
+The project includes:
+
+- **vercel.json**: Vercel deployment configuration
+- **_redirects**: SPA routing support
+- **Environment variables**: Secure Firebase configuration
+- **Build optimization**: Vite production build
+
+---
+
+## 📞 Support
+
+If you encounter any issues during deployment, check:
+
+1. All environment variables are correctly set in Vercel
+2. Firebase configuration is valid
+3. Build logs in Vercel dashboard for any errors
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.

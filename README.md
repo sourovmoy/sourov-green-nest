@@ -234,3 +234,64 @@ If you encounter any issues during deployment, check:
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+## 🔧 Troubleshooting Deployment Issues
+
+### MIME Type Error Fix
+
+If you encounter the error: `"Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of 'text/html'"`, try these solutions:
+
+#### Solution 1: Clear Vercel Cache
+```bash
+# If using Vercel CLI
+vercel --prod --force
+```
+
+Or in Vercel Dashboard:
+1. Go to your project settings
+2. Navigate to "Functions" tab
+3. Click "Redeploy" and check "Use existing Build Cache" = OFF
+
+#### Solution 2: Verify Environment Variables
+Make sure all `VITE_*` environment variables are set in Vercel:
+1. Go to Project Settings → Environment Variables
+2. Ensure all variables are added for "Production" environment
+3. Redeploy after adding variables
+
+#### Solution 3: Alternative Vercel Configuration
+If issues persist, try this minimal `vercel.json`:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install"
+}
+```
+
+#### Solution 4: Manual Build Check
+Test your build locally:
+
+```bash
+npm run build
+npm run preview
+```
+
+If local preview works but Vercel doesn't, the issue is deployment-specific.
+
+### Common Issues & Solutions
+
+1. **404 on Refresh**: Ensure `_redirects` file exists in `public/` folder
+2. **Environment Variables**: All Firebase config must use `VITE_` prefix
+3. **Build Errors**: Check Vercel build logs for specific error messages
+4. **Asset Loading**: Verify all imports use relative paths
+
+### Alternative Deployment (Netlify)
+If Vercel issues persist, you can deploy to Netlify:
+
+1. Connect your GitHub repo to Netlify
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. Add environment variables in Netlify dashboard
+
+The `_redirects` file will handle SPA routing automatically on Netlify.
